@@ -42,7 +42,7 @@ html[class*="page-"] body {
         text-decoration: underline;
     }
 
-    h1, h2 {
+    h1, h2, code {
         color: $white !important;
     }
 }
@@ -89,6 +89,7 @@ html.page-red body {
 
     em {
         font-style: italic;
+        border-bottom: 1px solid lighten($brand--alt-light, 15%);
     }
 
     p,
@@ -135,6 +136,6 @@ html.page-red body {
 }
 
 // Utils
-.underline {
-    text-decoration: underline !important;
+.u-red {
+    color: $red !important;
 }

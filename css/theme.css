@@ -34,7 +34,7 @@ html[class*="page-"] body {
   html[class*="page-"] body a {
     color: #fff !important;
     text-decoration: underline; }
-  html[class*="page-"] body h1, html[class*="page-"] body h2 {
+  html[class*="page-"] body h1, html[class*="page-"] body h2, html[class*="page-"] body code {
     color: #fff !important; }
 
 html.page-title body {
@@ -64,7 +64,8 @@ html.page-red body {
   .reveal strong {
     font-weight: 700; }
   .reveal em {
-    font-style: italic; }
+    font-style: italic;
+    border-bottom: 1px solid #dfddeb; }
   .reveal p,
   .reveal pre {
     margin-top: 2.125rem; }
@@ -90,7 +91,7 @@ html.page-red body {
   .reveal pre {
     text-align: left !important; }
 
-.underline {
-  text-decoration: underline !important; }
+.u-red {
+  color: #d64541 !important; }
 
 /*# sourceMappingURL=theme.css.map */

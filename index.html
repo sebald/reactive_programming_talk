@@ -74,19 +74,24 @@ x => x + 1
                     <h2>Application Development</h2>
                     <p>is about data flow</p>
                 </section>
-                <section>
+                <!--<section>
                     <h2>Imperative Programming</h2>
                     <pre><code class="javascript">
 let a = b + c;
                     </code></pre>
-                    <ul>
-                        <li>Variable <code>c</code> would not change, when <code>a</code> or <code>b</code> change.</li>
-                        <li>With reactive programming <em>it would</em> !</li>
-                    </ul>
+                    <p>Variable <code>c</code> would not change, when <code>a</code> or <code>b</code> change.</p>
+                </section>-->
+                <section>
+                    <h2>Data Flows are <em>complex</em></h2>
+                    <p>If this, then this, else this...</p>
                 </section>
                 <section>
-                    <h2>Most Data Flows are <span class="underline">async</span></h2>
-                    <ul class="fragment">
+                    <h2>Data Flows are <em>highly interactive</em></h2>
+                    <p>Multitude of UI events related to data events</p>
+                </section>
+                <section>
+                    <h2>Most Data Flows are <em>async</em></h2>
+                    <ul>
                         <li>Handling user input (Mouse/Keyboard)</li>
                         <li>AJAX/JSONP</li>
                         <li>Web Sockets</li>
@@ -94,8 +99,9 @@ let a = b + c;
                     </ul>
                 </section>
 
+
                 <section>
-                    <h2>Async Call in JavaScript</h2>
+                    <h2>Async Calls in JavaScript</h2>
                     <pre><code class="javascipt">
 myButton.addEventListener('click', (e) => {
   console.log('button was clicked!');
@@ -104,34 +110,57 @@ myButton.addEventListener('click', (e) => {
 
                     <ul class="unstyled">
                         <li class="fragment">&rarr; called from 0 to n times over time</li>
-                        <li class="fragment">&rarr; emits <span class="underline">async value</span></li>
+                        <li class="fragment">&rarr; emits <em>async value</em></li>
                     </ul>
                 </section>
                 <section>
                     <h2>Asynchonous Values</h2>
-                    <ul>
-                        <li>Can be represented as <span class="underline">collections</span></li>
-                        <li>Traversing collections can be done with <span class="underline">iterables</span></li>
-                        <li>e.g. <code>iterator.next()</code></li>
-                    <ul>
+                    <p>can be represented as <em>collections over times</em></p>
                 </section>
-
+                <section>
+                    <h2>Traversing Collections</h2>
+                    <p>with iterables &rarr; <code>iterator.next()</code></p>
+                </section>
                 <section data-state="page-red">
                     <h1>But</h1>
-                    <p class="fragment">We do not know when the <code>.next()</code> value is emitted.</p>
-                    <p class="fragment">There is reasoning about time.</p>
+                    <p>works only on discrete collections...</p>
+                </section>
+
+                <!--<section>
+                    <h2>But Methods like:</h2>
+                    <ul>
+                        <li><code>.forEach()</code></li>
+                        <li><code>.map()</code></li>
+                        <li><code>.filter()</code></li>
+                        <li><code>.reduce()</code></li>
+                    </ul>
+                    <p>do not work on asynchronous collections.</p>
+                </section>
+                <section>
+                    <h2>Arrays</h2>
+                    <p>are synchronous + discrete</p>
+                </section>-->
+
+                <section data-state="page-title">
+                    <h1>Observables</h1>
                 </section>
                 <section>
                     <h2>Introducing Observables</h2>
-                    <p>&rarr; any <span class="underline">number of values</span> over any <span class="underline">amount of time</span>.</p>
+                    <ul>
+                        <li>sequence of values that a producer pushes to the consumer</li>
+                        <li>can signal to a listener that is has completed</li>
+                    </ul>
                 </section>
                 <section data-background="assets/confused.gif"></section>
 
 
                 <section>
+                    <h2>Iterator Pattern</h2>
+                    <h2>+</h2>
+                    <h2>Observer Pattern</h2>
+                </section>
+                <section>
                     <h2>(Async) Data Streams</h2>
-                    <p class="fragment"><strong>Collections over time</strong></p>
-                    <p></p>
                     <img src="assets/stream.svg" class="fragment">
                     <ul class="fragment">
                         <li>ongoing events ordered in time</li>
@@ -175,11 +204,6 @@ myButton.addEventListener('click', (e) => {
                 <section>
                     <h2>Vanilla</h2>
                     <pre><code class="javascript">
-doubleClickListener(
-    document.querySelector('#button'),
-    () => console.log('double clicked!')
-);
-
 function doubleClickListener ( el, cb ) {
     let click_count = 0,
         click_timer;
@@ -199,6 +223,11 @@ function doubleClickListener ( el, cb ) {
         }
     });
 }
+
+doubleClickListener(
+    document.querySelector('#button'),
+    () => console.log('double clicked!')
+);
                     </code></pre>
                 </section>
                 <section>
@@ -252,9 +281,9 @@ Rx.Observable.fromEvent(document.querySelector('#search'), 'keyup')
                 <section>
                     <h2>What about Array Methods?</h2>
                     <ul class="fragment">
-                        <li>iterates over the entire array at each step</li>
-                        <li>creates new arrays each step</li>
-                        <li>intermediary arrays need to be GCed</li>
+                        <li>Iterates over the entire array at each step</li>
+                        <li>Creates new arrays each step</li>
+                        <li>Intermediary arrays need to be GCed</li>
                     </ul>
                 </section>
                 <section><img src="assets/transform_0.svg" /></section>
@@ -307,7 +336,7 @@ Rx.Observable.fromEvent(document.querySelector('#search'), 'keyup')
                 <section><img src="assets/process_20.svg" /></section>
                 <section><img src="assets/process_21.svg" /></section>
                 <section><img src="assets/process_22.svg" /></section>
-                <section data-background="assets/look.gif"></section>
+                <!--<section data-background="assets/look.gif"></section>-->
                 <section>
                     <h2>Use with Web Sockets?</h2>
                     <ul class="fragment">
@@ -319,7 +348,7 @@ Rx.Observable.fromEvent(document.querySelector('#search'), 'keyup')
                     <h1 style="color:#fff;">But ...</h!>
                 </section>
                 <section>
-                    <h2>Small Caveat</h2>
+                    <!--<h2>Small Caveat</h2>-->
                     <ul>
                         <li>Rx and Observables have a very verly large API</li>
                         <li>Thinking in streams is hard (at first)</li>
@@ -348,8 +377,8 @@ Rx.Observable.fromEvent(document.querySelector('#search'), 'keyup')
                         <li>Any number of values, any amount of time</li>
                         <li>Are lazy, don't do anything until you subscribe</li>
                         <li>Can retry / repeat</li>
-                        <li>Use <code>.do()</code> / <code>.subsrcibe()</code> for side effects</li>
                         <li>Were designed from the beginning to be cancellable</li>
+                        <li>Created from Event/Promise/...</li>
                     </ul>
                 </section>
                 <section>
